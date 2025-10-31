@@ -29,9 +29,19 @@ const courses = [
     description: "Protect systems and networks from cyber threats and security vulnerabilities",
   },
   {
-    title: "C, Java, Python",
+    title: "C Programming",
     icon: Terminal,
-    description: "Build strong programming foundations with core languages and data structures",
+    description: "Master the fundamentals of programming with C language and memory management",
+  },
+  {
+    title: "Java Programming",
+    icon: Code2,
+    description: "Learn object-oriented programming and build robust applications with Java",
+  },
+  {
+    title: "Python Programming",
+    icon: Brain,
+    description: "Start your coding journey with Python's simple syntax and powerful libraries",
   },
 ];
 
