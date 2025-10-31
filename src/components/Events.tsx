@@ -85,7 +85,7 @@ const Events = () => {
   };
 
   return (
-    <section id="events" className="py-20 bg-gradient-section">
+    <section id="events" className="py-20 bg-background">
       <div className="container mx-auto px-4">
         <h2 className="text-4xl md:text-5xl font-bold text-center mb-16 text-foreground">
           Our Events
