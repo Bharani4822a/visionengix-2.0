@@ -48,7 +48,7 @@ const Footer = () => {
                 <Instagram className="w-5 h-5" />
               </a>
               <a
-                href="https://linkedin.com"
+                href="https://www.linkedin.com/in/visionengix-training-and-development-9b31b9371/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="p-2 rounded-full bg-background/10 hover:bg-sky-500/30 transition"

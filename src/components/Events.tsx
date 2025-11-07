@@ -85,15 +85,16 @@ const EventsSection = () => {
         </h2>
 
         <div className="relative max-w-6xl mx-auto">
-          <div className="relative aspect-video rounded-3xl overflow-hidden shadow-2xl">
+          {/* Event Image with Hover Effect */}
+          <div className="relative aspect-video rounded-3xl overflow-hidden shadow-2xl group">
             <img
               src={events[currentIndex].image}
               alt={events[currentIndex].title}
-              className="w-full h-full object-cover"
+              className="w-full h-full object-cover transform transition duration-700 ease-in-out group-hover:scale-105 group-hover:brightness-90 group-hover:shadow-2xl"
             />
 
-            {/* Text Overlay */}
-            <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-4 sm:p-6 md:p-8">
+            {/* Text Overlay with Subtle Hover Animation */}
+            <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-4 sm:p-6 md:p-8 transition-all duration-700 ease-in-out group-hover:translate-y-[-5px]">
               <h3 className="text-lg sm:text-2xl md:text-3xl font-bold text-white mb-1 sm:mb-2 leading-tight">
                 {events[currentIndex].title}
               </h3>
@@ -108,7 +109,7 @@ const EventsSection = () => {
             variant="outline"
             size="icon"
             onClick={goToPrevious}
-            className="absolute left-2 sm:left-4 top-1/2 -translate-y-1/2 bg-white/90 hover:bg-black rounded-full w-10 h-10 sm:w-12 sm:h-12"
+            className="absolute left-2 sm:left-4 top-1/2 -translate-y-1/2 bg-white/90 hover:bg-black hover:text-white rounded-full w-10 h-10 sm:w-12 sm:h-12"
           >
             <ChevronLeft className="h-5 w-5 sm:h-6 sm:w-6" />
           </Button>
@@ -117,12 +118,12 @@ const EventsSection = () => {
             variant="outline"
             size="icon"
             onClick={goToNext}
-            className="absolute right-2 sm:right-4 top-1/2 -translate-y-1/2 bg-white/90 hover:bg-black rounded-full w-10 h-10 sm:w-12 sm:h-12"
+            className="absolute right-2 sm:right-4 top-1/2 -translate-y-1/2 bg-white/90 hover:bg-black hover:text-white rounded-full w-10 h-10 sm:w-12 sm:h-12"
           >
             <ChevronRight className="h-5 w-5 sm:h-6 sm:w-6" />
           </Button>
 
-          {/* Dots */}
+          {/* Dots for Navigation */}
           <div className="flex justify-center gap-2 mt-6">
             {events.map((_, index) => (
               <button

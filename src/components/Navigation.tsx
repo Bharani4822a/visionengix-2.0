@@ -13,13 +13,16 @@ const Navigation = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const scrollToSection = (id: string) => {
+  const scrollToSection = (id) => {
     const element = document.getElementById(id);
     if (element) {
       element.scrollIntoView({ behavior: "smooth" });
       setIsMenuOpen(false);
     }
   };
+
+  // ✅ Renamed label to "SaaS"
+  const navItems = ["home", "about", "services", "courses", "events", "contact"];
 
   return (
     <nav
@@ -53,9 +56,9 @@ const Navigation = () => {
             </span>
           </div>
 
-          {/* Desktop Navigation */}
+          {/* ✅ Desktop Navigation */}
           <div className="hidden md:flex items-center gap-8">
-            {["home", "about", "courses", "events", "contact"].map((section) => (
+            {navItems.map((section) => (
               <Button
                 key={section}
                 variant="ghost"
@@ -63,13 +66,15 @@ const Navigation = () => {
                 className={`transition-colors duration-300 ${
                   isScrolled
                     ? "text-slate-900 md:text-white"
-                    : "text-white "
+                    : "text-white"
                 }`}
               >
                 {section === "home"
                   ? "Home"
                   : section === "about"
                   ? "About Us"
+                  : section === "services"
+                  ? "SaaS"
                   : section === "courses"
                   ? "Courses"
                   : section === "events"
@@ -101,7 +106,7 @@ const Navigation = () => {
         onClick={() => setIsMenuOpen(false)}
       ></div>
 
-      {/* Slide-in Dark Menu */}
+      {/* ✅ Slide-in Mobile Menu */}
       <div
         className={`fixed top-0 right-0 h-full w-3/4 sm:w-1/2 bg-slate-900/95 backdrop-blur-md z-50 transform transition-transform duration-300 ease-in-out border-l border-sky-700/30 ${
           isMenuOpen ? "translate-x-0" : "translate-x-full"
@@ -119,7 +124,7 @@ const Navigation = () => {
           </div>
 
           <div className="flex flex-col gap-4">
-            {["home", "about", "courses", "events", "contact"].map((section) => (
+            {navItems.map((section) => (
               <Button
                 key={section}
                 variant="ghost"
@@ -130,6 +135,8 @@ const Navigation = () => {
                   ? "Home"
                   : section === "about"
                   ? "About Us"
+                  : section === "services"
+                  ? "SaaS"
                   : section === "courses"
                   ? "Courses"
                   : section === "events"
