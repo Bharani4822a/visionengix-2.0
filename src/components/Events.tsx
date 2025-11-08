@@ -1,6 +1,4 @@
-import { useState, useEffect } from "react";
-import { ChevronLeft, ChevronRight } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import { motion } from "framer-motion";
 import event1 from "@/assets/event1.jpeg";
 import event2 from "@/assets/event2.jpeg";
 import event3 from "@/assets/event3.jpeg";
@@ -8,133 +6,163 @@ import event4 from "@/assets/event4.jpeg";
 import event5 from "@/assets/event5.jpeg";
 import event6 from "@/assets/event6.jpeg";
 import event7 from "@/assets/event7.jpeg";
+import event8 from "@/assets/event8.jpeg";
+import event9 from "@/assets/event9.jpeg";
+import event10 from "@/assets/event10.jpeg";
+import event11 from "@/assets/event11.jpeg";
 
-interface Event {
-  image: string;
-  title: string;
-  description: string;
-}
+const events = [
+  {
+    id: 1,
+    img: event1,
+    title: "Inspiring Young Innovators through VisionEngiX",
+    instructor: "Government College of Arts and Science, Salem",
+    date: "Aug 2025",
+    description:
+      "A motivational event inspiring students to innovate and embrace technology-driven creativity through VisionEngiX initiatives.",
+  },
+  {
+    id: 2,
+    img: event2,
+    title: "Empowering the Next Generation with Python and AI",
+    instructor: "Sakthikailash College",
+    date: "Sep 2025",
+    description:
+      "An interactive session where students explored how Python drives AI through hands-on learning and real-world projects.",
+  },
+  {
+    id: 3,
+    img: event3,
+    title: "Mastering Collaboration with Git and GitHub",
+    instructor: "VisionEngiX Tech Team",
+    date: "Oct 2025",
+    description:
+      "An engaging session with MCA students exploring how Git and GitHub simplify teamwork in coding and enable effective version control.",
+  },
+  {
+    id: 4,
+    img: event4,
+    title: "Empowering Educators with AI Tools",
+    instructor: "AVS College",
+    date: "Nov 2025",
+    description:
+      "A transformative training session where staff explored how AI can enhance teaching, streamline workflows, and boost creativity.",
+  },
+  {
+    id: 5,
+    img: event5,
+    title: "Exploring the World of AI & Machine Learning",
+    instructor: "VisionEngiX Academy",
+    date: "Dec 2025",
+    description:
+      "An interactive session where students discovered how machines learn from data and drive innovation across industries.",
+  },
+  {
+    id: 6,
+    img: event6,
+    title: "Career Development and Industry Readiness",
+    instructor: "Sri Ganesh College",
+    date: "Jan 2026",
+    description:
+      "A focused training session enhancing students’ communication, problem-solving, and technical skills for career success.",
+  },
+  {
+    id: 7,
+    img: event7,
+    title: "Technical Trends of the Computer World",
+    instructor: "Kavery Engineering College",
+    date: "Feb 2026",
+    description:
+      "An insightful session highlighting emerging technologies like AI, ML, Cloud Computing, and Cybersecurity shaping the future.",
+  },
+  {
+    id: 8,
+    img: event8,
+    title: "Hands-on Training on Full-Stack Development",
+    instructor: "Kavery Engineering College",
+    date: "Feb 2026",
+    description: "Conducted an interactive session where students gained practical experience in full-stack development, covering front-end (HTML, CSS, JavaScript), back-end (Node.js, Python), and database (MongoDB). Students built real-world mini-projects, strengthening their confidence and understanding through hands-on learning."
+  },
+  {
+    id: 9,
+    img: event9,
+    title: "Career Development Training Session",
+    instructor: "Sri Ganesh College",
+    date: "Mar 2026",
+    description: "Conducted a session focused on improving students’ communication, problem-solving, and technical skills. Covered topics like resume building, interview preparation, teamwork, and adaptability to help students align their abilities with industry expectations."
+  },
+  {
+    id: 10,
+    img: event10,
+    title: "Career Development Training Session",
+    instructor: "Sri Ganesh College",
+    date: "Mar 2026",
+    description: "Conducted a session focused on improving students’ communication, problem-solving, and technical skills. Covered topics like resume building, interview preparation, teamwork, and adaptability to help students align their abilities with industry expectations."
+  },
+  {
+    id: 11,
+    img: event11,
+    title: "Career Development Training Session",
+    instructor: "Sri Ganesh College",
+    date: "Mar 2026",
+    description: "Conducted a session focused on improving students’ communication, problem-solving, and technical skills. Covered topics like resume building, interview preparation, teamwork, and adaptability to help students align their abilities with industry expectations."
+  },
+];
 
 const EventsSection = () => {
-  const events: Event[] = [
-    {
-      image: event1,
-      title: "Inspiring Young Innovators through VisionEngiX",
-      description: "Government College of Arts and Science, Salem.",
-    },
-    {
-      image: event2,
-      title: "Empowering the Next Generation with Python and AI",
-      description:
-        "An interactive session at Sakthikailash College where students discovered how Python drives the world of Artificial Intelligence through hands-on learning and real-world mini projects.",
-    },
-    {
-      image: event3,
-      title: "Mastering Collaboration with Git and GitHub",
-      description:
-        "An engaging session with MCA students exploring how Git and GitHub simplify teamwork in coding—enabling version control, smooth collaboration, and error-free development through branching and merging.",
-    },
-    {
-      image: event4,
-      title: "Empowering Educators with AI Tools",
-      description:
-        "A transformative training session at AVS College, where staff members explored how AI can enhance teaching, streamline workflows, and revolutionize content creation, productivity, and data-driven decision-making in education.",
-    },
-    {
-      image: event5,
-      title: "Exploring the World of AI & Machine Learning",
-      description:
-        "An interactive session with students delving into how machines learn from data, understand patterns, and drive innovation across industries like healthcare, finance, and automation.",
-    },
-    {
-      image: event6,
-      title: "Career Development and Industry Readiness",
-      description:
-        "A focused training session at Sri Ganesh College aimed at enhancing students’ communication, problem-solving, and technical skills, preparing them for real-world career opportunities and professional growth.",
-    },
-    {
-      image: event7,
-      title: "Technical Trends of the Computer World",
-      description:
-        "An insightful session at Kavery Engineering College highlighting emerging technologies like AI, ML, Cloud Computing, Cybersecurity, and Full-Stack Development—guiding students to understand their impact on the future of tech.",
-    },
-  ];
-
-  const [currentIndex, setCurrentIndex] = useState(0);
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentIndex((prev) => (prev + 1) % events.length);
-    }, 5000);
-    return () => clearInterval(interval);
-  }, [events.length]);
-
-  const goToPrevious = () => {
-    setCurrentIndex((prev) => (prev - 1 + events.length) % events.length);
-  };
-
-  const goToNext = () => {
-    setCurrentIndex((prev) => (prev + 1) % events.length);
-  };
-
   return (
-    <section id="events" className="py-24 bg-secondary/30">
+    <section id="events" className="py-20 bg-secondary/30">
       <div className="container mx-auto px-6">
         <h2 className="text-4xl md:text-5xl font-bold text-center mb-16">
           Our Events
         </h2>
 
-        <div className="relative max-w-6xl mx-auto">
-          {/* Event Image with Hover Effect */}
-          <div className="relative aspect-video rounded-3xl overflow-hidden shadow-2xl group">
-            <img
-              src={events[currentIndex].image}
-              alt={events[currentIndex].title}
-              className="w-full h-full object-cover transform transition duration-700 ease-in-out group-hover:scale-105 group-hover:brightness-90 group-hover:shadow-2xl"
-            />
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-10 max-w-6xl mx-auto">
+          {events.map((event) => (
+            <motion.div
+              key={event.id}
+              whileHover={{
+                scale: 1.05,
+                y: -8,
+                boxShadow: "0 20px 40px rgba(0,0,0,0.25)",
+              }}
+              transition={{
+                duration: 0.25,
+                ease: "easeOut",
+              }}
+              className="bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-2xl cursor-pointer relative transform transition-transform"
+            >
+              {/* Image */}
+              <div className="relative overflow-hidden">
+                <motion.img
+                  src={event.img}
+                  alt={event.title}
+                  className="w-full h-56 object-cover"
+                  whileHover={{ scale: 1.1 }}
+                  transition={{ duration: 0.3, ease: "easeOut" }}
+                />
+              </div>
 
-            {/* Text Overlay with Subtle Hover Animation */}
-            <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-4 sm:p-6 md:p-8 transition-all duration-700 ease-in-out group-hover:translate-y-[-5px]">
-              <h3 className="text-lg sm:text-2xl md:text-3xl font-bold text-white mb-1 sm:mb-2 leading-tight">
-                {events[currentIndex].title}
-              </h3>
-              <p className="text-sm sm:text-base md:text-lg text-white/90 line-clamp-3 sm:line-clamp-none">
-                {events[currentIndex].description}
-              </p>
-            </div>
-          </div>
-
-          {/* Navigation Buttons */}
-          <Button
-            variant="outline"
-            size="icon"
-            onClick={goToPrevious}
-            className="absolute left-2 sm:left-4 top-1/2 -translate-y-1/2 bg-white/90 hover:bg-black hover:text-white rounded-full w-10 h-10 sm:w-12 sm:h-12"
-          >
-            <ChevronLeft className="h-5 w-5 sm:h-6 sm:w-6" />
-          </Button>
-
-          <Button
-            variant="outline"
-            size="icon"
-            onClick={goToNext}
-            className="absolute right-2 sm:right-4 top-1/2 -translate-y-1/2 bg-white/90 hover:bg-black hover:text-white rounded-full w-10 h-10 sm:w-12 sm:h-12"
-          >
-            <ChevronRight className="h-5 w-5 sm:h-6 sm:w-6" />
-          </Button>
-
-          {/* Dots for Navigation */}
-          <div className="flex justify-center gap-2 mt-6">
-            {events.map((_, index) => (
-              <button
-                key={index}
-                onClick={() => setCurrentIndex(index)}
-                className={`h-2 rounded-full transition-all ${
-                  index === currentIndex ? "w-8 bg-primary" : "w-2 bg-muted"
-                }`}
-              />
-            ))}
-          </div>
+              {/* Description Section */}
+              <div className="p-5">
+                <p className="text-sm text-muted-foreground mb-1">
+                  {event.instructor} • {event.date}
+                </p>
+                <h3 className="text-xl font-bold text-primary mb-2">
+                  {event.title}
+                </h3>
+                <p className="text-muted-foreground text-base leading-relaxed">
+                  {event.description}
+                </p>
+                <div className="flex items-center justify-between mt-4">
+                  <p className="text-sm text-gray-500">14,097 learners</p>
+                  <button className="text-primary font-medium hover:underline">
+                    Save
+                  </button>
+                </div>
+              </div>
+            </motion.div>
+          ))}
         </div>
       </div>
     </section>

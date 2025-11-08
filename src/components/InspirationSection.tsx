@@ -1,81 +1,96 @@
-import { useState, useEffect } from "react";
+import { motion } from "framer-motion";
 import quote1 from "@/assets/A1.jpg";
 import quote2 from "@/assets/A2.jpg";
 import quote3 from "@/assets/A3.jpg";
 import quote4 from "@/assets/A4.jpg";
+import quote5 from "@/assets/A5.jpg";
+import quote6 from "@/assets/A6.jpg";
+import quote7 from "@/assets/A7.jpg";
+import quote8 from "@/assets/A8.avif";
 
 const InspirationSection = () => {
   const inspirations = [
     {
       img: quote1,
-      quote: "Innovation distinguishes between a leader and a follower.",
+      quote: "Your future is created by what you do today, not tomorrow.",
     },
     {
       img: quote2,
-      quote: "Learning never exhausts the mind — keep growing.",
+      quote:
+        "The struggle you’re in today is developing the strength you need for tomorrow.",
     },
     {
       img: quote3,
-      quote: "Dream big. Start small. Act now.",
+      quote: "Believe in yourself, and you’ll be unstoppable.",
     },
     {
       img: quote4,
-      quote: "The future belongs to those who prepare for it today.",
+      quote: "Don’t compare your beginning to someone else’s middle.",
+    },
+    {
+      img: quote5,
+      quote:
+        "Success doesn’t come from what you do occasionally, it comes from what you do consistently.",
+    },
+    {
+      img: quote6,
+      quote: "Be the energy you want to attract.",
+    },
+    {
+      img: quote7,
+      quote: "You only live once, but if you do it right, once is enough.",
+    },
+    {
+      img: quote8,
+      quote: "Make today so awesome that yesterday gets jealous.",
     },
   ];
-
-  const [currentIndex, setCurrentIndex] = useState(0);
-
-  // Auto-slide every 5 seconds
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentIndex((prev) => (prev + 1) % inspirations.length);
-    }, 5000);
-    return () => clearInterval(interval);
-  }, [inspirations.length]);
-
-  const currentItem = inspirations[currentIndex];
 
   return (
     <section
       id="inspiration"
-      className="relative py-20 bg-gradient-to-b from-slate-900 via-sky-950/70 to-slate-900 overflow-hidden"
+      className="py-20 bg-gradient-to-b from-slate-900 via-sky-950/60 to-slate-900"
     >
-      {/* Background Glow */}
-      <div className="absolute inset-0 bg-rgba(53, 53, 53, 0.15)" />
+      <div className="container mx-auto px-6">
+        {/* <h2 className="text-4xl md:text-5xl font-bold text-center text-white mb-16">
+          Inspiring Thoughts
+        </h2> */}
 
-      <div className="relative z-10 container mx-auto px-6">
-        <div
-          key={currentIndex}
-          className="grid md:grid-cols-2 items-center gap-8 transition-all duration-700 ease-in-out animate-fade-in"
-        >
-          {/* Image on Left */}
-          <div className="flex justify-center">
-            <img
-              src={currentItem.img}
-              alt={`Inspiration ${currentIndex + 1}`}
-              className="w-full max-w-md h-[350px] object-cover rounded-2xl shadow-lg border border-sky-700/40 hover:shadow-[0_0_40px_rgba(56,189,248,0.5)] transition-transform duration-500 hover:scale-105"
-            />
-          </div>
-
-          {/* Quote on Right */}
-          <div className="text-center md:text-left text-gray-200 px-4">
-            <p className="text-2xl md:text-3xl font-semibold italic leading-relaxed">
-              “{currentItem.quote}”
-            </p>
-            <div className="mt-6 flex justify-center md:justify-start space-x-3">
-              {inspirations.map((_, index) => (
-                <span
-                  key={index}
-                  className={`w-3 h-3 rounded-full transition-all duration-300 ${
-                    index === currentIndex
-                      ? "bg-sky-400 scale-110"
-                      : "bg-sky-700/40"
-                  }`}
+        {/* Card Grid */}
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-10">
+          {inspirations.map((item, index) => (
+            <motion.div
+              key={index}
+              whileHover={{
+                scale: 1.05,
+                y: -6,
+                boxShadow: "0 15px 35px rgba(0,0,0,0.25)",
+              }}
+              transition={{
+                duration: 0.25,
+                ease: "easeOut",
+              }}
+              className="bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl cursor-pointer transform transition-transform"
+            >
+              {/* Image */}
+              <div className="overflow-hidden">
+                <motion.img
+                  src={item.img}
+                  alt={`Inspiration ${index + 1}`}
+                  className="w-full h-56 object-cover"
+                  whileHover={{ scale: 1.1 }}
+                  transition={{ duration: 0.4, ease: "easeOut" }}
                 />
-              ))}
-            </div>
-          </div>
+              </div>
+
+              {/* Quote */}
+              <div className="p-5 text-center">
+                <p className="text-gray-100 text-lg italic leading-relaxed">
+                  “{item.quote}”
+                </p>
+              </div>
+            </motion.div>
+          ))}
         </div>
       </div>
     </section>
