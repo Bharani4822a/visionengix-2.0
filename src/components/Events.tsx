@@ -52,7 +52,7 @@ const events = [
     id: 5,
     img: event5,
     title: "Exploring the World of AI & Machine Learning",
-    instructor: "VisionEngiX Academy",
+    instructor: "VisionEngiX",
     date: "Dec 2025",
     description:
       "An interactive session where students discovered how machines learn from data and drive innovation across industries.",
@@ -103,7 +103,7 @@ const events = [
     id: 11,
     img: event11,
     title: "Career Development Training Session",
-    instructor: "Sri Ganesh College",
+    instructor: "Vysya College",
     date: "Mar 2026",
     description: "Conducted a session focused on improving students’ communication, problem-solving, and technical skills. Covered topics like resume building, interview preparation, teamwork, and adaptability to help students align their abilities with industry expectations."
   },
@@ -155,7 +155,7 @@ const EventsSection = () => {
                   {event.description}
                 </p>
                 <div className="flex items-center justify-between mt-4">
-                  <p className="text-sm text-gray-500">14,097 learners</p>
+                  <p className="text-sm text-gray-500">5000+ learners</p>
                   <button className="text-primary font-medium hover:underline">
                     Save
                   </button>
