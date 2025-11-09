@@ -10,6 +10,8 @@ import event8 from "@/assets/event8.jpeg";
 import event9 from "@/assets/event9.jpeg";
 import event10 from "@/assets/event10.jpeg";
 import event11 from "@/assets/event11.jpeg";
+import event12 from "@/assets/event12.jpeg";
+import event13 from "@/assets/event13.jpeg";
 
 const events = [
   {
@@ -106,6 +108,22 @@ const events = [
     instructor: "Vysya College",
     date: "Mar 2026",
     description: "Conducted a session focused on improving students’ communication, problem-solving, and technical skills. Covered topics like resume building, interview preparation, teamwork, and adaptability to help students align their abilities with industry expectations."
+  },
+  {
+    id: 12,
+    img: event12,
+    title: "AI Unleased the NLP Revolution Workshop",
+    instructor: "Visionengix",
+    date: "Nov 2025",
+    description: "Master the Language of the Future: ChatGPT, LLMs & Industry AI. A free masterclass on Generative AI, with portfolio projects and job assistance."
+  },
+  {
+    id: 13,
+    img: event13,
+    title: "Free Online Cyber Security Workshop",
+    instructor: "Visionengix",
+    date: "Sep 2025",
+    description: "A one-day ethical hacking workshop covering foundations, attacks (SQLi, XSS), and defense (IDS, Firewalls, Cryptography)."
   },
 ];
 
